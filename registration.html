@@ -15,31 +15,22 @@
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<!-- Main CSS -->
-	<link href="./assets/css/main.css"    rel="stylesheet"/>
-</head>
+	<link href="./assets/css/main.css" rel="stylesheet" /> </head>
 
 <body>
 	<!-- Header -->
-    <header class="navbar navbar-dark bg-danger">
-        <div class="container-fluid ">
-          <div class="container d-flex align-items-center justify-content-between">
-            <div class="d-flex align-items-center">
-				
-            </div>
-            <div class="d-flex align-items-center">
-            <i class="far fa-clock text-white" >&nbsp</i> <span id="datetime" class="text-white"></span>
-            </div>
-          </div>
-        </div>
-    </header>
-    <!-- End Header -->
-    
-      
+	<header class="navbar navbar-dark bg-danger">
+		<div class="container-fluid ">
+			<div class="container d-flex align-items-center justify-content-between">
+				<div class="d-flex align-items-center"> <i class="far fa-calendar-alt  text-white">&nbsp</i><span id="dateYear" class="text-white"></span> </div>
+				<div class="d-flex align-items-center"> <i class="far fa-clock text-white">&nbsp</i> <span id="datetime" class="text-white"></span> </div>
+			</div>
+		</div>
+	</header>
+	<!-- End Header -->
 	<!-- Navbar -->
 	<nav>
-		<div class="logo mx-auto"> 
-            <img src="./assets/images/logo.png" height="100px" width="100px"> 
-        </div>
+		<div class="logo mx-auto"> <img src="./assets/images/logo.png" height="100px" width="100px"> </div>
 		<input type="checkbox" id="click">
 		<label for="click" class="menu-btn"> <i class="fas fa-bars"></i> </label>
 		<ul class="mx-auto">
@@ -54,75 +45,100 @@
 	<main>
 		<div class="container mt-5">
 			<div class="row">
-                <div class="card">
-                    <div class="card-body">
-                      <div class="row justify-content-md-center shift-register">
-                          
-                          <div class="col-lg-4">
-                              <button class="btn btn-sm btn-danger rounded-pill fw-bold">Hospital</button>
-                          </div>
-                          <div class="col-lg-4">
-                            <button class="btn btn-sm btn-danger rounded-pill fw-bold">Receiver</button>
-                          </div>
-                      </div>
-                      <div class="container mt-5">
-                          <div class="row mt-5">
-                            <div class="col-lg-12">
-                                <h1 class="text-center mb-5">Hospital Registration</h1>
-                            </div>
-                              <div class="col-sm-6">
-                                <img src="./assets/images/Hospital.png" class="img-fluid mt-5 h-75 w-100" alt="...">
-                              </div>
-                              <div class="col-sm-6">
-                                <form class="md-5">
-                                  
-                                    <div class="mb-3">
-                                        <label for="Hospitalname" class="form-label">Hospitalname</label>
-                                        <input type="text" class="form-control border-danger shadow-none"name="Hospitalname" id="Hospitalname"required/>
-                                    </div>
-                                    <div class="mb-3 ">
-                                        <label for="contactNo" class="form-label">Contact no</label>
-                                        <input type="phone" name="contactNo" class="form-control border-danger shadow-none" id="contactNo" required/>
-                                    </div>
-                                    <div class="mb-3">
-                                      <label for="email" class="form-label">Email</label>
-                                      <input type="email" name="email" class="form-control border-danger shadow-none" id="email" required/>
-                                    </div>
-                                    <div class="mb-3 ">
-                                      <label for="city" class="form-label">City</label>
-                                      <input type="text" name="city" class="form-control border-danger shadow-none" id="city" list="citylist" required/>
-                                      <datalist id="citylist">
-                                        <option value="Hyderabad">
-                                        <option value="Kurnool">
-                                        <option value="Vizag">
-                                        <option value="Vizianagaram">
-                                        <option value="Srikakulam">
-                                      </datalist>
-                                    </div>
-                                    <div class="mb-3 ">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control border-danger shadow-none" id="exampleCheck1" required/>
-                                    </div>
-                                    <div class=" ">
-                                        <label for="cpassword" class="form-label">Confirm password</label>
-                                        <input type="text" name="cpassword" class="form-control border-danger shadow-none" id="exampleCheck1" required/>
-                                    </div>
-                                    <div class=" mb-3 text-center">
-                                        <button class="btn btn-sm btn-danger fw-bold " style="font-size:20px;">Register</button>
-                                    </div>
-                                    
-                                  </form>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-            </div>
+				<div class="card">
+					<div class="card-body">
+						<div class="row justify-content-md-center shift-register">
+							<div class="col-lg-4">
+								<button class="btn btn-sm btn-danger rounded-pill fw-bold">Hospital</button>
+							</div>
+							<div class="col-lg-4">
+								<button class="btn btn-sm btn-danger rounded-pill fw-bold">Receiver</button>
+							</div>
+						</div>
+						<div class="container mt-5">
+							<div class="row mt-5">
+								<div class="col-lg-12">
+									<h1 class="text-center mb-5">Hospital Registration</h1> </div>
+								<div class="col-sm-6"> <img src="./assets/images/Hospital.png" class="img-fluid mt-5 h-75 w-100" alt="..."> </div>
+								<div class="col-sm-6">
+									<form class="md-5">
+										<div class="mb-3">
+											<label for="Hospitalname" class="form-label">Hospitalname</label>
+											<input type="text" class="form-control border-danger shadow-none" name="Hospitalname" id="Hospitalname" required/> </div>
+										<div class="mb-3 ">
+											<label for="contactNo" class="form-label">Contact no</label>
+											<input type="phone" name="contactNo" class="form-control border-danger shadow-none" id="contactNo" required/> </div>
+										<div class="mb-3">
+											<label for="email" class="form-label">Email</label>
+											<input type="email" name="email" class="form-control border-danger shadow-none" id="email" required/> </div>
+										<div class="mb-3 ">
+											<label for="city" class="form-label">City</label>
+											<input type="text" name="city" class="form-control border-danger shadow-none" id="city" list="citylist" required/>
+											<datalist id="citylist">
+												<option value="Hyderabad">
+													<option value="Kurnool">
+														<option value="Vizag">
+															<option value="Vizianagaram">
+																<option value="Srikakulam">
+											</datalist>
+										</div>
+										<div class="mb-3 ">
+											<label for="password" class="form-label">Password</label>
+											<input type="password" name="password" class="form-control border-danger shadow-none" id="exampleCheck1" required/> </div>
+										<div class=" ">
+											<label for="cpassword" class="form-label">Confirm password</label>
+											<input type="text" name="cpassword" class="form-control border-danger shadow-none" id="exampleCheck1" required/> </div>
+										<div class=" mb-3 text-center">
+											<button class="btn btn-sm btn-danger fw-bold " style="font-size:20px;">Register</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</main>
 	<!-- End Main -->
+	<!-- Footer -->
+	<footer class="page-footer font-small blue pt-4 bg-danger text-white">
+		<!-- Footer Links -->
+		<div class="container-fluid text-center text-md-left">
+			<!-- Grid row -->
+			<div class="row">
+				<!-- Grid column -->
+				<div class="col-md-6 mt-md-0 mt-3">
+					<!-- Content -->
+					<h5 class="text-uppercase text-left">The Online Blood Bank.</h5>
+					<p>Excuses never save a life, Blood donation does</p>
+				</div>
+				<!-- Grid column -->
+				<hr class="clearfix w-100 d-md-none pb-3">
+				<!-- Grid column -->
+				<div class="col-md-3 mb-md-0 mb-3">
+					<!-- Links -->
+					<h5 class="text-uppercase list-group">Links</h5>
+					<ul class="list-unstyled list-group">
+						<li class=""> <a href="index.html" class="text-white text-decoration-none ">Home</a> </li>
+						<li class=""> <a href="registration.html" class="text-white text-decoration-none">Register</a> </li>
+						<li class=""> <a href="login.html" class="text-white text-decoration-none">Login</a> </li>
+					</ul>
+				</div>
+				<!-- Grid column -->
+			</div>
+			<!-- Grid row -->
+		</div>
+		<!-- Footer Links -->
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">©
+			<script>
+			document.write(new Date().getFullYear())
+			</script> Copyright: <a href="https://jayachandragoteti.github.io/" class="text-white">Jayachandra Goteti</a> </div>
+		<!-- Copyright -->
+	</footer>
+	<!-- Footer -->
 	<script src="./assets/js/script.js"></script>
 </body>
-
 
 </html>

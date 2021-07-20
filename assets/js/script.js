@@ -1,4 +1,11 @@
 startTime();
+const date = new Date();
+const month = date.toLocaleString('default', {
+  month: 'long',
+});
+document.getElementById('dateYear').innerHTML =
+  date.getDay() + ' ' + month + ' ' + date.getFullYear();
+
 function startTime() {
   const today = new Date();
   let h = today.getHours();
@@ -9,8 +16,7 @@ function startTime() {
   var k = today.getDate();
   m = checkTime(m);
   s = checkTime(s);
-  document.getElementById('datetime').innerHTML =
-    k + '-' + j + '-' + n + ' ' + h + ':' + m + ':' + s;
+  document.getElementById('datetime').innerHTML = h + ':' + m + ':' + s;
   setTimeout(startTime, 1000);
 }
 

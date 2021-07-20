@@ -263,3 +263,39 @@ padding: 50px;
 		}
 	}
 >>>>>>> b2c79ca9eb8f7eaf238cda5cf3d3e56ddca2d303
+
+
+/* footer */
+.container-fluid {
+	overflow: hidden;
+	margin-top: 250px;
+	background: #262626;
+	color: #627482 !important;
+	margin-bottom: 0;
+	padding-bottom: 0
+}
+
+small {
+	font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.bold-text {
+	color: #ffffff !important
+}
+
+.mt-55 {
+	margin-top: calc(50px + (60 - 50) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+h3 {
+	font-size: calc(34px + (40 - 34) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.social {
+	font-size: 21px !important
+}
+
+.rights {
+	font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
+}
+/* footer */

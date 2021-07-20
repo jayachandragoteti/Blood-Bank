@@ -26,3 +26,17 @@ function checkTime(i) {
   } // add zero in front of numbers < 10
   return i;
 }
+
+$('.HospitalRegistrationButton').click(function () {
+  $('.HospitalRegistrationForm').show();
+  $('.ReceiverRegistrationForm').hide();
+  $('.HospitalRegistrationButton').prop('disabled', true);
+  $('.ReceiverRegistrationButton').prop('disabled', false);
+});
+
+$('.ReceiverRegistrationButton').click(function () {
+  $('.ReceiverRegistrationForm').show();
+  $('.HospitalRegistrationForm').hide();
+  $('.HospitalRegistrationButton').prop('disabled', false);
+  $('.ReceiverRegistrationButton').prop('disabled', true);
+});

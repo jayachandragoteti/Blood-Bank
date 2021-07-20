@@ -242,3 +242,8 @@ input[type="checkbox"] {
 	50%{opacity: .5;}
 	100%{opacity: 1;}
 	}
+	@media (max-width: 800px){
+		.shift-register{
+			margin-left:10%;
+		}
+	}

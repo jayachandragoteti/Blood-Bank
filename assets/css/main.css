@@ -233,3 +233,12 @@ input[type="checkbox"] {
     height:5%;
     background-color: rgb(248, 87, 87);
 }
+
+.blink{
+	animation: blink 1s linear infinite;
+}
+@keyframes blink{
+	0%{opacity: 0;}
+	50%{opacity: .5;}
+	100%{opacity: 1;}
+	}

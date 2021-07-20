@@ -242,6 +242,7 @@ input[type="checkbox"] {
 	50%{opacity: .5;}
 	100%{opacity: 1;}
 	}
+<<<<<<< HEAD
 
 
 	.Heads h2{
@@ -255,3 +256,10 @@ input[type="checkbox"] {
 td{
 padding: 50px;
 }
+=======
+	@media (max-width: 800px){
+		.shift-register{
+			margin-left:10%;
+		}
+	}
+>>>>>>> b2c79ca9eb8f7eaf238cda5cf3d3e56ddca2d303

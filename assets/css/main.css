@@ -242,3 +242,16 @@ input[type="checkbox"] {
 	50%{opacity: .5;}
 	100%{opacity: 1;}
 	}
+
+
+	.Heads h2{
+		font-size: 3em;
+		font-weight: bolder;
+		text-align: center;
+		font-family: "Times New Roman", Times, serif;
+		color: rgb(248, 87, 87);
+	
+	}
+td{
+padding: 50px;
+}

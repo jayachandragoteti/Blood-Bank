@@ -1,0 +1,162 @@
+
+      #signup{
+        margin-top: 50px;
+      }
+        .img-fluid{
+            width:400px;
+            height:400px;
+            border-radius: 10%;
+            
+        }
+        table, th, td{
+            border:1px solid black;
+            text-align: center;
+        }
+        .btn{
+            margin-right: 20px;
+            background-color:  darkslateblue;
+            color:white;
+            border:none;
+            font-weight: 600;
+        }
+        .btn:hover{
+            background-color: red;
+            color:darkslateblue;
+            font-weight:600;
+        }
+
+        
+nav{
+  display: flex;
+  height: 115px;
+  width: 100%;
+  padding-left: 40px;
+  background: whitesmoke;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 2px solid rgb(190, 188, 188);
+}
+nav .logo{
+  position: relative;
+}
+nav ul{
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+nav ul li{
+  margin: 0 5px;
+}
+nav ul li a{
+  color: darkslateblue;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bolder;
+  position:relative;
+  padding: 5px 25px;
+  border-radius: 25px;
+  letter-spacing: 1px;
+  transition: all 0.8s ease;
+}
+nav ul li a.active,
+nav ul li a:hover{
+  color: white;
+  transition: 1s ease;
+  background: darkslateblue;
+}
+nav .menu-btn i{
+  color:darkslateblue;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"]{
+  display: none;
+}
+
+.home p{
+    text-align: center;
+    color: #848482;
+    font-weight: bolder;
+    font-size: 1.2em;
+    font-family: "Times New Roman", Times, serif;
+    padding: 100px 0px 0px 0px;
+}
+.Heads h2{
+    font-size: 3em;
+    font-weight: bolder;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    color: darkslateblue;
+
+}
+.Heads h3{
+    font-size: 3em;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 900;
+    text-align: center;
+}
+.btn{
+    background: darkslateblue;
+    font-family: "Times New Roman", Times, serif;
+    color: whitesmoke;
+    font-weight: bolder;
+    font-size: 1.1em;
+    /* margin-top: 50px; */
+    padding:10px 25px;
+    border: none;
+    border-radius: 25px;
+    transition: 1s ease;
+}
+.btn:hover{
+    background: skyblue;
+}
+@media (max-width: 1000px){
+  nav{
+    padding: 0 40px 0 50px;
+  }
+}
+@media (max-width: 970px) {
+  nav .menu-btn i{
+    display: block;
+  }
+  #click:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+  nav ul{
+    position: fixed;
+    top: 100px;
+    left: -100%;
+    background:whitesmoke;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    display: block;
+    transition: all 0.6s ease;
+  }
+  #click:checked ~ ul{
+    left: 0;
+  }
+  nav ul li{
+    width: 100%;
+    margin: 40px 0;
+  }
+  nav ul li a{
+    width: 100%;
+    margin-left: -100%;
+    display: block;
+    font-size: 20px;
+    transition: 1s ease;
+  }
+  #click:checked ~ ul li a{
+    margin-left: 0px;
+  }
+  nav ul li a.active,
+  nav ul li a:hover{
+    background: none;
+    color: red;
+  }
+}

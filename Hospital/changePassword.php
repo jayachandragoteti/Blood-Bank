@@ -1,9 +1,10 @@
 <?PHP 
 session_start();
+include './../includes/databaseConnection.php';
 if (!isset($_SESSION['HospitalLogin'])) {
 	header("Location: ./../includes/logout.php");
 }
-include './../includes/databaseConnection.php';
+$HospitalLogin = $_SESSION['HospitalLogin'];
 $msg = "";
 $error = '';
 if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['HospitalLogin'])) {

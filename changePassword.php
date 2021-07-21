@@ -26,7 +26,7 @@ if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['ReceiverLogin'])) 
 					if ($updatePassword) {
 						$msg = 'Password Updated successfully.';
 					} else {
-						$error = "Update failed try again!";
+						$error = "Failed try again!";
 					}
 				}else{
 					$error = "Invalid Old password!";

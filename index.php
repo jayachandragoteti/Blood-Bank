@@ -1,6 +1,9 @@
 <?PHP 
 session_start();
 include './includes/databaseConnection.php';
+if (isset($_SESSION['HospitalLogin'])) {
+	header("Location: ./Hospital/index.php");
+}
 ?>
 <!DOCTYPE html>
 <html>

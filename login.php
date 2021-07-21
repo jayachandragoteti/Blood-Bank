@@ -1,5 +1,8 @@
 <?PHP
 include './includes/databaseConnection.php';
+if (isset($_SESSION['HospitalLogin'])) {
+	header("Location: ./Hospital/index.php");
+}
 $msg = "";
 $error = "";
 if(isset($_POST['loginSubmit'])){
@@ -19,7 +22,7 @@ if(isset($_POST['loginSubmit'])){
 				if (password_verify($loginPassword, $searchHospitalRow['password'])) {
 					$_SESSION['HospitalLogin'] = $searchHospitalRow['sno'];
 					$msg = "Hospital logged successfully";
-					header("Location: ./Hospital/dashboard.php");
+					header("Location: ./Hospital/index.php");
 				}else{
 					$error = "Invalid Password!";
 				}

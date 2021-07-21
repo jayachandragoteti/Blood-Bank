@@ -1,7 +1,26 @@
 <?PHP 
 session_start();
+include './../includes/databaseConnection.php';
 if (!isset($_SESSION['HospitalLogin'])) {
 	header("Location: ./../includes/logout.php");
+}
+$HospitalLogin = $_SESSION['HospitalLogin'];
+$msg = "";
+$error = "";
+if (isset($_POST['AddBloodInfoSubmit'])) {
+	if (isset($_POST['bloodGroup']) && $_POST['bloodGroup'] != "" && isset($_POST['Quantity']) && $_POST['Quantity'] != "") {
+		$bloodGroup = $connect -> real_escape_string($_POST['bloodGroup']);
+		$Quantity = $connect -> real_escape_string($_POST['Quantity']);
+		$AddBloodInfo = mysqli_query($connect,"INSERT INTO `availableblood`(`hospital`, `bloodGroup`, `quantity`) VALUES ('$HospitalLogin','$bloodGroup','$Quantity')");
+		if ($AddBloodInfo) {
+			$msg = "successfully added.";
+		} else {
+			$error = "Failed,try again!";
+		}
+	} else {
+		$error = "All fields must be filled!";
+	}
+	
 }
 ?>
 <!doctype html>
@@ -31,33 +50,32 @@ if (!isset($_SESSION['HospitalLogin'])) {
 				<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
 					<div class="container border-bottom border-danger mb-5">
 						<div class="head  mt-0 pl-0">
-							<h2 class="text-danger fw-bold large">Add Blood Info</h2> </div>
+							<h2 class="text-danger fw-bold large">Add Blood Info</h2> 
+							<!-- Response Messages -->
+							<?php if($error!=""){?><div class="text-danger"><strong><i class="far fa-times-circle text-danger">&nbsp</i> <?php echo htmlentities($error); ?> </strong></div><?php }else if($msg !=""){?><div class="text-success"><strong><i class="far fa-check-circle text-success">&nbsp</i><?php echo htmlentities($msg); ?> </strong></div><?php }?>
+							<!-- End Response Messages -->
+						</div>
 					</div>
-					<form>
+					<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
 						<div class="mb-3 ">
-							<label class="form-label text-danger">Blood Type</label>
-							<select class="form-select form-control bg-light text-danger border border-danger " aria-label="Default select example">
+							<label class="form-label text-danger">Blood Group</label>
+							<select name="bloodGroup" class="form-select form-control bg-light text-danger border border-danger " aria-label="Default select example" required>
 								<option selected>Open this select menu</option>
-								<option value="A +Ve">A +Ve</option>
-								<option value="A -ve">A -ve</option>
-								<option value="B +ve">B +ve</option>
-								<option value="B +ve">B -ve</option>
-								<option value="AB +Ve">AB +Ve</option>
-								<option value="AB -ve">AB -ve</option>
-								<option value="O +ve">O +ve</option>
-								<option value="O -ve">O -ve</option>
+								<option value="A+">A+</option>
+								<option value="A-">A-</option>
+								<option value="B+">B+</option>
+								<option value="B+">B-</option>
+								<option value="AB+">AB+</option>
+								<option value="AB-">AB-</option>
+								<option value="O+">O+</option>
+								<option value="O-">O-</option>
 							</select>
 						</div>
 						<div class="mb-3">
-							<label class="form-label text-danger">Qunatity</label>
-							<select class="form-select form-control bg-light text-danger border border-danger" aria-label="Default select example">
-								<option selected>Open this select menu</option>
-								<option value="1">1 Ltr</option>
-								<option value="2">2 Ltr</option>
-								<option value="3">3 Ltr</option>
-							</select>
+							<label for="Quantity" class="form-label text-danger">Quantity</label>
+							<input type="number" min='1' name="Quantity" class="form-select form-control bg-light text-danger border border-danger" Placeholder='Enter Quantity in units' id="receiverQuantity" required/> 
 						</div>
-						<button type="submit" class="btn btn-primary bg-danger w-25 float-right mt-3 rounded-pill border-none text-white">Submit</button>
+						<input type="submit" name="AddBloodInfoSubmit" value="Submit" class="btn btn-primary bg-danger w-25 float-right mt-3 rounded-pill border-none text-white" />
 					</form>
 				</div>
 			</div>

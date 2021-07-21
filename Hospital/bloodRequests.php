@@ -38,7 +38,7 @@ $error = "";
 					<!-- Filter section -->
 					<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
 						<div class="row justify-content-md-center">
-							<div class="col col-lg- text-center text-danger mb-3 ">
+							<div class="col col-lg-  text-danger mb-3 ">
 								<div class="head  mt-0 pl-0 ">
 									<h2 class="h1 text-danger fw-bold border-bottom border-danger">Blood Requests</h2>  
 									<!-- Response Messages -->
@@ -67,7 +67,7 @@ $error = "";
 												</select>
 											</div>
 											<div class="col-sm-2">
-												<input name="SearchBlood" type="submit" class="btn btn-danger" value="Search           " /> </div>
+												<input name="SearchBlood" type="submit" class="btn btn-danger rounded-pill" value="    Search       " /> </div>
 										</div>
 									</form>
 								</div>

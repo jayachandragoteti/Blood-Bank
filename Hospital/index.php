@@ -90,7 +90,7 @@ if (isset($_POST['Update'])) {
 											<input type="text" name="HospitalCity"  id="city" value="<?PHP echo $SelectHospitalRow['city'];?>" class="form-control border-danger  border shadow-none"  required/>
 										</div>
 										<div class=" mb-3 text-danger text-center mt-2">
-											<input type="submit" class="btn btn-sm btn-danger fw-bold rounded-pill " name="Update" style="font-size:20px;" value="Update" /> 
+											<input type="submit" class="btn btn-sm btn-danger fw-bold rounded-pill " name="Update" style="font-size:20px;" value="    Update   " /> 
 										</div>
 									</form>
 								</div>

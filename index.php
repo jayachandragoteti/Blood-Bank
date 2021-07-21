@@ -101,9 +101,9 @@ if (isset($_SESSION['HospitalLogin'])) {
 									<select name="hospital" class="form-select" aria-label="Default select example">
 										<option selected value="">Hospital</option>
 										<?PHP 
-										$selectHospital  = mysqli_query($connect,"SELECT `sno`,`name` FROM `hospitals`");
+										$selectHospital  = mysqli_query($connect,"SELECT `sno`,`hospitalName` FROM `hospitals`");
 										while ($selectHospitalRow = mysqli_fetch_array($selectHospital)) { ?>
-											<option value="<?PHP echo $selectHospitalRow['sno'];?>"><?PHP echo $selectHospitalRow['name']; ?></option>
+											<option value="<?PHP echo $selectHospitalRow['sno'];?>"><?PHP echo $selectHospitalRow['hospitalName']; ?></option>
 										<?PHP } ?>
 									</select>
 								</div>
@@ -121,21 +121,13 @@ if (isset($_SESSION['HospitalLogin'])) {
 						<thead>
 							<tr class="p-2">
 								<th scope="col">Hospital</th>
-								<th scope="col">Blood Group</th>
+								<th scope="col">Blood&nbspGroup</th>
 								<th scope="col">Quantity</th>
 								<th scope="col">City</th>
 								<th scope="col">Request</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="p-2">
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-								<td>@mdo</td>
-								<td>
-									<input name="SearchBlood" type="submit" class="btn btn-danger  btn-sm" value="Request Blood" /> </td>
-							</tr>
 							<?PHP 
 								$selectBloodQuery = "
 									SELECT * FROM `availableblood` WHERE `quantity` != '0'
@@ -155,21 +147,21 @@ if (isset($_SESSION['HospitalLogin'])) {
 								$selectBloodSql = mysqli_query($connect,$selectBloodQuery);
 								if (mysqli_num_rows($selectBloodSql) != 0) {
 								while ($selectBloodRow = mysqli_fetch_array($selectBloodSql)) {
-									$HospitalSno = $selectBloodRow[''];
+									$HospitalSno = $selectBloodRow['hospital'];
 									$searchHospital = mysqli_query($connect,"SELECT * FROM `hospitals` WHERE `sno` = '$HospitalSno'");
 									$searchHospitalRow = mysqli_fetch_array($searchHospital);
 								?>
 								<tr class="p-2">
-									<td><?PHP echo $searchHospitalRow['hospital'];?></td>
+									<td><?PHP echo $searchHospitalRow['hospitalName'];?></td>
 									<td><?PHP echo $selectBloodRow['bloodGroup'];?></td>
 									<td><?PHP echo $selectBloodRow['quantity'];?></td>
 									<td><?PHP echo $searchHospitalRow['city'];?></td>
 									<td>
 										<?PHP 
 										if (isset($_SESSION['ReceiverLogin'])) {
-											echo '<a href="myRequests.php?myRequestId ='.$selectBloodRow['sno'].'"  class="btn btn-danger  btn-sm"><small>Request Sample</small></a>';
+											echo '<a href="myRequests.php?myRequestId='.$selectBloodRow['sno'].'"  class="btn btn-danger btn-sm"><small>Request&nbspSample</small></a>';
 										}else {
-											echo '<a href="./login.php"  class="btn btn-danger  btn-sm"><small>Request Sample</small></a>';
+											echo '<a href="./login.php" class="btn btn-danger btn-sm"><small>Request&nbspSample</small></a>';
 										}
 										?>
 									</td>

@@ -14,7 +14,7 @@ if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['HospitalLogin'])) 
 		$confirmPassword = $connect -> real_escape_string($_POST['confirmPassword']);
 		if ($newPassword != $confirmPassword) {
 			$error = "Password and confirm password should be same!";
-		}elseif ($newPassword <= 8) {
+		}elseif ($newPassword < 8) {
 			$error = "Password should contain at least eight characters. *";
 		} else {
 			$selectHospital = mysqli_query($connect,"SELECT * FROM `hospitals` WHERE `sno` = '$Hospital'");
@@ -70,7 +70,7 @@ if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['HospitalLogin'])) 
 				<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
 					<div class="container border-bottom border-danger mb-5">
 						<div class="head  mt-0 pl-0">
-							<h2 class="text-danger fw-bold large">Change Password</h2> 
+							<h3 class="text-danger fw-bold large">Change Password</h3> 
 							<!-- Response Messages -->
 							<?php if($error!=""){?><div class="text-danger"><strong><i class="far fa-times-circle text-danger">&nbsp</i> <?php echo htmlentities($error); ?> </strong></div><?php }else if($msg !=""){?><div class="text-success"><strong><i class="far fa-check-circle text-success">&nbsp</i><?php echo htmlentities($msg); ?> </strong></div><?php }?>
 							<!-- End Response Messages -->

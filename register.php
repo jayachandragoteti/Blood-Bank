@@ -28,7 +28,7 @@ if (isset($_POST['ReceiverRegistration'])) {
 			}elseif(strlen($phone_to_check) < 10 || strlen($phone_to_check) > 14) {
 				// This can be customized if you want phone number from a specific country
 				$error = "Invalid phone number!";
-			}elseif(strlen($receiverPassword) <= 8) {
+			}elseif(strlen($receiverPassword) < 8) {
 				$error = "Password should contain at least eight characters. *";
 			}elseif($receiverPassword != $receiverConfirmCPassword) {
 				$error = "Password and confirm password should be same!";
@@ -72,7 +72,7 @@ if (isset($_POST['HospitalRegistration'])) {
 			}elseif(strlen($phone_to_check) < 10 || strlen($phone_to_check) > 14) {
 				// This can be customized if you want phone number from a specific country
 				$error = "Invalid email format!";
-			}elseif(strlen($HospitalPassword) <= 8) {
+			}elseif(strlen($HospitalPassword) < 8) {
 				$error = "Password should contain at least eight characters. *";
 			}elseif($HospitalPassword != $HospitalConfirmPassword) {
 				$error = "Password and confirm password should be same!";

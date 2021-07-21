@@ -58,29 +58,25 @@ if (isset($_GET['myRequestId']) && $_GET['myRequestId'] !="") {
 								<h3 class="text-center mb-3 text-danger">My Requests</h3> </div>
 							<!--table-->
 							<table class="table table-hover table-bordered border-danger ">
-								<thead>
-									<tr class="p-2">
-										<th scope="col">Request Id</th>
-										<th scope="col">HospitalName</th>
-										<th scope="col">Date & Time</th>
-										<th scope="col">Blood Group</th>
-									</tr>
-								</thead>
 								<tbody>
 									<tr class="p-2">
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>Otto</td>
+										<th scope="row">Request Id</th>
+										<th>Hospital</th>
+										<th>Blood Group</th>
+										<th>Date & Time</th>
 									</tr>
 									<?PHP 
 										$myRequests  = mysqli_query($connect,"SELECT * FROM `request` WHERE `receiver`= '$ReceiverLogin' ORDER BY `sno` DESC");
 										if (mysqli_num_rows($myRequests) != 0) {
-											while ($myRequestsRow = mysqli_fetch_array($myRequests)) { ?>
+											while ($myRequestsRow = mysqli_fetch_array($myRequests)) { 
+												$hospitalSno = $myRequestsRow['hospital'];
+												$selectHospital  = mysqli_query($connect,"SELECT `hospitalName` FROM `hospitals` WHERE `sno` = '$hospitalSno' ");
+												$selectHospitalRow = mysqli_fetch_array($selectHospital);
+												?>
 												<tr class="p-2">
 													<th scope="row"><?PHP echo $myRequestsRow['sno'];?></th>
-													<td><?PHP echo $myRequestsRow['hospital'];?></td>
-													<td><?PHP echo $myRequestsRow['sno'];?></td>
+													<td><?PHP echo $selectHospitalRow['hospitalName'];?></td>
+													<td><?PHP echo $myRequestsRow['bloodGroup'];?></td>
 													<td><?PHP echo $myRequestsRow['datm'];?></td>
 												</tr>
 											<?PHP } }else { ?>

@@ -4,7 +4,7 @@ $serverName = "localhost";
 
 // In my case, user name will be root
 $userName = "root";
-//$userName = "id17280129_jay";
+//$userName = "id17280129_theonlinebb";
 // Password is empty
 $password = "";
 //$password = "WcGD(*bcNFn6g)b?";

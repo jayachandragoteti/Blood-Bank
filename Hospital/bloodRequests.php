@@ -40,7 +40,7 @@ $error = "";
 						<div class="row justify-content-md-center">
 							<div class="col col-lg- text-center text-danger mb-3 ">
 								<div class="head  mt-0 pl-0 ">
-									<h2 class="h1 text-danger fw-bold border-bottom border-danger">Blood Requests</h2>  
+									<h3 class="h1 text-danger fw-bold border-bottom border-danger">Blood Requests</h3>  
 									<!-- Response Messages -->
 									<?php if($error!=""){?><div class="text-danger"><strong><i class="far fa-times-circle text-danger">&nbsp</i> <?php echo htmlentities($error); ?> </strong></div><?php }else if($msg !=""){?><div class="text-success"><strong><i class="far fa-check-circle text-success">&nbsp</i><?php echo htmlentities($msg); ?> </strong></div><?php }?>
 									<!-- End Response Messages -->
@@ -51,7 +51,7 @@ $error = "";
 						<div class="row justify-content-md-center mb-5">
 							<div class="col col-lg-12">
 								<div class="container">
-									<form>
+									<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 										<div class="row float-right ">
 											<div class="col-sm-7">
 												<select name="bloodGroup" class="custom-select" aria-label="Default select example">
@@ -75,49 +75,45 @@ $error = "";
 						</div>
 						<!-- end Filter section -->
 						<div class="col col-lg-12">
-							<!-- table -->
-							<table class="table">
-								<thead>
-									<tr class="p-2">
-										<th scope="col">#</th>
-										<th scope="col">Receiver</th>
-										<th scope="col">Blood Group</th>
-										<th scope="col">Email</th>
-										<th scope="col">Contact No</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="p-2">
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-										<td>9876543210</td>
-									</tr>
-									<tr class="p-2">
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-										<td>9876543210</td>
-									</tr>
-									<tr class="p-2">
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-										<td>9876543210</td>
-									</tr>
-									<tr class="p-2">
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-										<td>9876543210</td>
-									</tr>
-								</tbody>
-							</table>
-							<!-- end table -->
+							<div class="table-responsive">
+								<!-- table -->
+								<table class="table">
+									<thead>
+										<tr class="p-2">
+											<th scope="col">Request Id</th>
+											<th scope="col">Receiver</th>
+											<th scope="col">Blood Group</th>
+											<th scope="col">Email</th>
+											<th scope="col">Contact No</th>
+										</tr>
+									</thead>
+									<tbody>
+									<?PHP 
+										$myRequestsQuery = "SELECT * FROM `request` WHERE `hospital`= '$HospitalLogin' ";
+										if (isset($_POST['bloodGroup']) && $_POST['bloodGroup'] !="") {
+											$bloodGroup  = $_POST['bloodGroup'];
+											$myRequestsQuery .= "AND `bloodGroup` ='$bloodGroup' ";
+										}
+										$myRequestsQuery .= " ORDER BY `sno` DESC";
+										$myRequests  = mysqli_query($connect,$myRequestsQuery);
+										if ($myRequestsRow = mysqli_num_rows($myRequests) != 0) {
+											while ($myRequestsRow = mysqli_fetch_array($myRequests)) { 
+												$Receiver = $myRequestsRow['receiver'];
+												$SelectReceiver = mysqli_query($connect,"SELECT * FROM `receivers` WHERE  `sno` = '$Receiver'");
+												$SelectReceiverRow = mysqli_fetch_array($SelectReceiver)
+												?>
+												<tr class="p-2">
+													<th scope="row"><?PHP echo $myRequestsRow['sno'];?></th>
+													<td><?PHP echo $SelectReceiverRow['name'];?></td>
+													<td><?PHP echo $myRequestsRow['bloodGroup'];?></td>
+													<td><a href='mailto:<?PHP echo $SelectReceiverRow['email'];?>'><?PHP echo $SelectReceiverRow['email'];?></a> </td>
+													<td><a href='tel:<?PHP echo $SelectReceiverRow['contactNo'];?>'><?PHP echo $SelectReceiverRow['contactNo'];?></a></td>
+												</tr>
+										<?PHP } } ?>
+									</tbody>
+								</table>
+								<!-- end table -->
+							</div>
 						</div>
 					</div>
 					<!-- end of request of blood -->

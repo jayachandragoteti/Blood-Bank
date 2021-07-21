@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2021 at 07:32 AM
+-- Generation Time: Jul 21, 2021 at 02:56 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -34,6 +34,15 @@ CREATE TABLE `availableblood` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `availableblood`
+--
+
+INSERT INTO `availableblood` (`sno`, `hospital`, `bloodGroup`, `quantity`) VALUES
+(2, 1, 'A+', 10),
+(3, 1, 'A-', 10),
+(4, 1, 'AB+', 19);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +58,13 @@ CREATE TABLE `hospitals` (
   `password` varchar(225) NOT NULL,
   `datm` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hospitals`
+--
+
+INSERT INTO `hospitals` (`sno`, `hospitalName`, `contactNo`, `email`, `city`, `password`, `datm`) VALUES
+(1, 'My Hospital', '9347886639', 'g.jayachandramohan@gmail.com', 'VISAKHAPATNAM', '$2y$10$eVkupp6gPgjfOxtsjl6m4.FcjwuHGnsV5j6jvfM1X8Rl/4BX4NG0i', '2021-07-21 10:23:26');
 
 -- --------------------------------------------------------
 
@@ -72,7 +88,7 @@ CREATE TABLE `receivers` (
 --
 
 INSERT INTO `receivers` (`sno`, `name`, `email`, `contactNo`, `address`, `bloodType`, `password`, `datm`) VALUES
-(1, 'Jayachandra Goteti', 'gotetijayachandra@gmail.com', '9491694195', '1-73/78,OPP RAMALAYAM', 'A+', '$2y$10$NqKOi2nVUkZXvDQXEJqqxetd/FC.VrYR7RP57MGL6cq403l1lwi.m', '2021-07-21 02:48:54');
+(1, 'GOTETI JAYACHANDRA', 'gotetijayachandra@gmail.com', '9491694195', 'MEDACHARLA Village', 'B+', '$2y$10$0Lv25thlIXPSUAeUT7qmCObPfaH42GeJSiRaMT9HkrmSDJEl4nnJK', '2021-07-21 10:21:50');
 
 -- --------------------------------------------------------
 
@@ -87,6 +103,18 @@ CREATE TABLE `request` (
   `bloodGroup` varchar(4) NOT NULL,
   `datm` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`sno`, `hospital`, `receiver`, `bloodGroup`, `datm`) VALUES
+(1, 1, 1, 'B+', '2021-07-21 11:26:25'),
+(2, 1, 1, 'A-', '2021-07-21 11:26:30'),
+(3, 1, 1, 'A+', '2021-07-21 11:26:34'),
+(4, 1, 1, 'A+', '2021-07-21 11:27:37'),
+(5, 1, 1, 'A+', '2021-07-21 11:27:51'),
+(6, 1, 1, 'A+', '2021-07-21 11:27:55');
 
 --
 -- Indexes for dumped tables
@@ -128,13 +156,13 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `availableblood`
 --
 ALTER TABLE `availableblood`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hospitals`
 --
 ALTER TABLE `hospitals`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `receivers`
@@ -146,7 +174,7 @@ ALTER TABLE `receivers`
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

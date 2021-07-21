@@ -35,7 +35,8 @@ if (!isset($_SESSION['HospitalLogin'])) {
 					<div class="row justify-content-md-center mt-5  jumbotron jumbotron-fluid bg-white shadow shadow-regular ">
 						<div class="row justify-content-md-center">
 							<div class="col col-lg-8 text-center text-danger mb-3 ">
-								<h2 class="h1 text-danger fw-bold">Blood Requests</h2> </div>
+								<h2 class="h1 text-danger fw-bold">Blood Requests</h2> 
+							</div>
 						</div>
 						<div class="row justify-content-md-center mb-5">
 							<div class="col col-lg-12">

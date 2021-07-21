@@ -18,15 +18,15 @@
   </head>
   <body>
 		
-		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar" class="bg-light text-danger">
+		<div class="wrapper d-flex align-items-stretch ">
+			<nav id="sidebar" class="bg-light text-danger ">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
 	          <span class="sr-only">Toggle Menu</span>
 	        </button>
         </div>
-	  		<h1><a href="index.html" class="logo bg-danger">Project Name</a></h1>
+	  		<h1><a href="index.html" class="logo bg-danger">Online Blood Bank</a></h1>
         <ul class="list-unstyled components mb-5">
           <li class=" text-danger">
             <a href="#" class="text-danger"><span class="fa fa-home mr-3 text-danger border-danger"></span> Profile</a>
@@ -51,34 +51,71 @@
     
     <div id="content" class="p-4 p-md-5 pt-5">
         <div class="container">
-            <div class="head">
-                <h2>Add Blood Information</h2>
+            <div class="head p-2">
+                <h2 class="text-danger fw-bold large">Add Blood Information</h2>
             </div>
         </div>
-        <div class="container">
-            <div class="container overflow-hidden">
-                <div class="row gy-5">
-                  <div class="col-6 p-3">
-                    <div class="p-3 border rounded-pill bg-danger text-white bold-text text-center">A +ve  23   A-ve  12</div>
+        <!-- overview        -->
+        <div class="row">
+          <div class="col-lg-6 col-xl-3 mb-4">
+              <div class="card bg-smoke-white  text-danger h-100 shadow p-1 mb-2 bg-body rounded ">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="me-3">
+                              <div class="text-white-75 small">A Type</div>
+                              <div class="text-lg fw-bold">40,000</div>
+                          </div>
+                      </div>
                   </div>
-                  <div class="col-6 p-3">
-                    <div class="p-3 border rounded-pill bg-danger text-white bold-text text-center">B +ve  23   B-ve  12</div>
-                  </div>
-                  <div class="col-6 p-3">
-                    <div class="p-3 border rounded-pill bg-danger text-white bold-text text-center">AB +ve  23   AB-ve  12</div>
-                  </div>
-                  <div class="col-6 p-3">
-                    <div class="p-3 border rounded-pill bg-danger text-white bold-text text-center">O +ve  23   O-ve  12</div>
-                  </div>
-                </div>
+                 
               </div>
           </div>
+          <div class="col-lg-6 col-xl-3 mb-4">
+              <div class="card bg-white  text-danger h-100 shadow p-1 mb-2 bg-body rounded">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="me-3">
+                              <div class="text-white-75 small">B type</div>
+                              <div class="text-lg fw-bold">215,000</div>
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-xl-3 mb-4">
+              <div class="card bg-white  text-danger h-100 shadow p-1 mb-2 bg-body rounded">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="me-3">
+                              <div class="text-white-75 small">AB Type</div>
+                              <div class="text-lg fw-bold">24</div>
+                          </div>
+                        </div>
+                  </div>
+                  
+              </div>
+          </div>
+          <div class="col-lg-6 col-xl-3 mb-4">
+              <div class="card bg-white  text-danger h-100 shadow p-1 mb-2 bg-body rounded">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="me-3">
+                              <div class="text-white-75 small">O Type</div>
+                              <div class="text-lg fw-bold">17</div>
+                          </div></div>
+                  </div>
+                  
+              </div>
+          </div>
+      </div>
+      <!-- overviewend      -->
           <div class="container ">
-            <div class="container overflow-hidden mt-5 p-5 bg-danger rounded text-white">
+            <div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
                 <form>
                     <div class="mb-3">
-                      <label  class="form-label">Blood Type</label>
-                      <select class="form-select form-control" aria-label="Default select example">
+                      <label  class="form-label text-danger">Blood Type</label>
+                      <select class="form-select form-control bg-danger text-white" aria-label="Default select example">
                         <option selected>Open this select menu</option>
                         <option value="A +Ve">A +Ve</option>
                         <option value="A -ve">A -ve</option>
@@ -92,8 +129,8 @@
                       </select>
                     </div>
                     <div class="mb-3">
-                      <label  class="form-label">Password</label>
-                      <select class="form-select form-control" aria-label="Default select example">
+                      <label  class="form-label text-danger">Qunatity</label>
+                      <select class="form-select form-control bg-danger text-white" aria-label="Default select example">
                         <option selected>Open this select menu</option>
                         <option value="1">1 Ltr</option>
                         <option value="2">2 Ltr</option>
@@ -103,7 +140,7 @@
                       </select>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary bg-light w-25 float-right mt-3 text-danger">Submit</button>
+                    <button type="submit" class="btn btn-primary bg-danger w-25 float-right mt-3  text-white">Submit</button>
                   </form>
           </div>
     </div>

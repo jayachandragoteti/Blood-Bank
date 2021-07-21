@@ -27,7 +27,7 @@ if (isset($_POST['ReceiverRegistration'])) {
 				$error = "Invalid email format!";
 			}elseif(strlen($phone_to_check) < 10 || strlen($phone_to_check) > 14) {
 				// This can be customized if you want phone number from a specific country
-				$error = "Invalid email format!";
+				$error = "Invalid phone number!";
 			}elseif(strlen($receiverPassword) <= 8) {
 				$error = "Password should contain at least eight characters. *";
 			}elseif($receiverPassword != $receiverConfirmCPassword) {

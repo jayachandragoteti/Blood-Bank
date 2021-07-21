@@ -14,14 +14,24 @@ if (isset($_POST['Update'])) {
 		$HospitalName = $connect -> real_escape_string($_POST['HospitalName']);
 		$HospitalContactNo = $connect -> real_escape_string($_POST['HospitalContactNo']);
 		$HospitalEmail = $connect -> real_escape_string($_POST['HospitalEmail']);
-		$HospitalCity = $connect -> real_escape_string(strtoupper($_POST['HospitalCity']));
-		$UpdateHospital = mysqli_query($connect,"UPDATE `hospitals` SET `hospitalName`='$HospitalName',`contactNo`='$HospitalContactNo',`email`='$HospitalEmail',`city`='$HospitalCity' WHERE `sno` = '$HospitalLogin'");
-		if ($UpdateHospital) {
-			$msg = 'Profile Updated successfully.';
-		} else {
-			$error = "Update failed try again!";
+		// Allow +, - and . in phone number
+		$filtered_phone_number = filter_var($HospitalContactNo, FILTER_SANITIZE_NUMBER_INT);
+		// Remove "-" from number
+		$phone_to_check = str_replace("-", "", $filtered_phone_number);
+		if (!filter_var($HospitalEmail, FILTER_VALIDATE_EMAIL)) {
+			$error = "Invalid email format!";
+		}elseif(strlen($phone_to_check) < 10 || strlen($phone_to_check) > 14) {
+			// This can be customized if you want phone number from a specific country
+			$error = "Invalid phone number!";
+		}else{
+			$HospitalCity = $connect -> real_escape_string(strtoupper($_POST['HospitalCity']));
+			$UpdateHospital = mysqli_query($connect,"UPDATE `hospitals` SET `hospitalName`='$HospitalName',`contactNo`='$HospitalContactNo',`email`='$HospitalEmail',`city`='$HospitalCity' WHERE `sno` = '$HospitalLogin'");
+			if ($UpdateHospital) {
+				$msg = 'Profile Updated successfully.';
+			} else {
+				$error = "Update failed try again!";
+			}
 		}
-		
 	} else {
 		$error = "All fields must be filled!";
 	}

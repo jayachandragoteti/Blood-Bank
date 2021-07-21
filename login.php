@@ -19,7 +19,7 @@ if(isset($_POST['loginSubmit'])){
 				if (password_verify($loginPassword, $searchHospitalRow['password'])) {
 					$_SESSION['HospitalLogin'] = $searchHospitalRow['sno'];
 					$msg = "Hospital logged successfully";
-					header("Location: index.php");
+					header("Location: ./Hospital/dashboard.php");
 				}else{
 					$error = "Invalid Password!";
 				}

@@ -108,7 +108,8 @@ if (isset($_POST['AddBloodInfoSubmit'])) {
 												</select>
 											</div>
 											<div class="col-sm-2">
-												<input name="SearchBlood" type="submit" class="btn btn-danger" value="Search           " /> </div>
+												<input name="SearchBlood" type="submit" class="btn btn-danger" value="Search           " />
+											</div>
 										</div>
 									</form>
 								</div>

@@ -30,13 +30,13 @@ $HospitalLogin = $_SESSION['HospitalLogin'];
             <?PHP include './includes/header.php';?>
             <!-- End Header -->
 			<div id="content" class="p-4 p-md-5 pt-5">
-				<div class="container " id="SearchBlood">
+				<div class="container " >
 					<!-- end Filter section -->
 					<!-- Requestof blood -->
 					<!-- Filter section -->
-					<div class="row justify-content-md-center mt-5  jumbotron jumbotron-fluid bg-white shadow shadow-regular ">
+					<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
 						<div class="row justify-content-md-center">
-							<div class="col col-lg-8 text-center text-danger mb-3 ">
+							<div class="col col-lg- text-center text-danger mb-3 ">
 								<h2 class="h1 text-danger fw-bold">Blood Requests</h2> 
 							</div>
 						</div>
@@ -46,7 +46,7 @@ $HospitalLogin = $_SESSION['HospitalLogin'];
 									<form>
 										<div class="row float-right ">
 											<div class="col-sm-7">
-												<select name="bloodGroup" class="form-select" aria-label="Default select example">
+												<select name="bloodGroup" class="custom-select" aria-label="Default select example">
 													<option selected value="">Blood Group</option>
 													<option value="A+">A+</option>
 													<option value="A-">A-</option>
@@ -66,7 +66,7 @@ $HospitalLogin = $_SESSION['HospitalLogin'];
 							</div>
 						</div>
 						<!-- end Filter section -->
-						<div class="col col-lg-8">
+						<div class="col col-lg-12">
 							<!-- table -->
 							<table class="table">
 								<thead>

@@ -11,7 +11,7 @@ include './includes/databaseConnection.php';
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0,shrink-to-fit=no">
 	<!--Favicon-->
-	<link rel="icon" href="./assets/images/logo.png" type="image/gif" sizes="16x16">
+	<link rel="icon"  href="./assets/images/logo.png">
 	<!-- Page title -->
 	<title>Home | Blood Bank</title>
 	<!-- Font awesome -->

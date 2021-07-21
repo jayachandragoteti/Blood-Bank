@@ -13,7 +13,7 @@ if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['ReceiverLogin'])) 
 		$confirmPassword = $connect -> real_escape_string($_POST['confirmPassword']);
 		if ($newPassword != $confirmPassword) {
 			$error = "Password and confirm password should be same!";
-		}elseif ($newPassword >= 8) {
+		}elseif ($newPassword <= 8) {
 			$error = "Password should contain at least eight characters. *";
 		} else {
 			$selectReceiver = mysqli_query($connect,"SELECT * FROM `receivers` WHERE `sno` = '$Receiver'");
@@ -26,7 +26,7 @@ if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['ReceiverLogin'])) 
 					if ($updatePassword) {
 						$msg = 'Password Updated successfully.';
 					} else {
-						$error = "Update failed try again!";
+						$error = "Failed try again!";
 					}
 				}else{
 					$error = "Invalid Old password!";
@@ -39,7 +39,6 @@ if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['ReceiverLogin'])) 
 	} else {
 		$error = "All fields must be filled!";
 	}
-	
 }
 ?>
 	<!DOCTYPE html>

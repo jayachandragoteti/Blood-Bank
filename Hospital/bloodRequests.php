@@ -1,8 +1,10 @@
 <?PHP 
 session_start();
+include './../includes/databaseConnection.php';
 if (!isset($_SESSION['HospitalLogin'])) {
 	header("Location: ./../includes/logout.php");
 }
+$HospitalLogin = $_SESSION['HospitalLogin'];
 ?>
 <!doctype html>
 <html lang="en">

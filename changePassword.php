@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-if (!isset($_SESSION['ReceiverLogin'])) {
+if (!isset($_SESSION['ReceiverLogin']) || isset($_SESSION['HospitalLogin'])) {
 	header("Location: ./includes/logout.php");
 }
 include './includes/databaseConnection.php';

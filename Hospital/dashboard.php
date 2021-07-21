@@ -28,44 +28,40 @@ if (!isset($_SESSION['HospitalLogin'])) {
 				<!-- End Header -->
 				<!-- Deatils-->
 				<div id="content" class="p-4 p-md-12 pt-5">
-				<div class="container col-md-10 ">
-					<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
-						<div class="container border-bottom border-danger mb-5">
-							<div class="head  mt-0 pl-0">
-								<h2 class="text-danger fw-bold large">Hospital Details </h2> </div>
-						</div>
-						<div class="col-md-12">
-							<div class="card mb-3">
-								<div class="card-body">
-									<div class="row">
-										<div class="col-sm-3 ">
-											<h6 class="mb-0 text-danger">Hospital Name</h6> 
+				<div class="container col-md-8 ">
+				<div class="container mt-5 z-index">
+								<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body ">
+									<div class="container border-bottom border-danger mb-5">
+										<div class="head  mt-0 pl-0">
+											<h2 class="text-danger fw-bold large">Hospital Details</h2> 
 										</div>
-										<div class="col-sm-9 text-secondary"> Kenneth Valdez </div>
 									</div>
-									<hr>
-									<div class="row">
-										<div class="col-sm-3">
-											<h6 class="mb-0 text-danger">Email</h6> </div>
-										<div class="col-sm-9 text-secondary"> fip@jukmuh.al </div>
-									</div>
-									<hr>
-									<div class="row">
-										<div class="col-sm-3">
-											<h6 class="mb-0 text-danger">Phone</h6> </div>
-										<div class="col-sm-9 text-secondary"> (239) 816-9029 </div>
-									</div>
-									<hr>
-									<div class="row">
-										<div class="col-sm-3">
-											<h6 class="mb-0 text-danger">Address</h6> </div>
-										<div class="col-sm-9 text-secondary"> (320) 380-4539 </div>
+									<div class="col-sm-10 ml-5 mt-3">
+										<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="md-5">
+
+											<div class="mb-3 text-danger">
+												<label for="HospitalName" class="form-label">Hospital Name</label>
+												<input type="text" class="form-control border-danger border shadow-none" name="HospitalName" id="HospitalName" required/> 
+											</div>
+											<div class="mb-3 text-danger ">
+												<label for="contactNo" class="form-label">Contact No</label>
+												<input type="phone" name="HospitalContactNo" class="form-control border-danger border shadow-none" id="contactNo" required/> 
+											</div>
+											<div class="mb-3 text-danger">
+												<label for="email" class="form-label">Email</label>
+												<input type="email" name="HospitalEmail" class="form-control border-danger border shadow-none" id="email" required/> 
+											</div>
+											<div class="mb-3 text-danger ">
+												<label for="city" class="form-label">City</label>
+												<input type="text" name="HospitalCity" class="form-control border-danger  border shadow-none" id="city" list="citylist" required/>
+											</div>
+											<div class=" mb-3 text-danger text-center mt-5">
+												<input type="submit" class="btn btn-sm btn-danger fw-bold " name="Update" style="font-size:20px;" value="Update" /> 
+											</div>
+										</form>
 									</div>
 								</div>
-								<!--Section: Block Content-->
 							</div>
-						</div>
-					</div>
 				</div>
 				</div>
 						<!-- end change password -->

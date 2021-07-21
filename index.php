@@ -1,3 +1,7 @@
+<?PHP 
+session_start();
+include './includes/databaseConnection.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -5,11 +9,11 @@
 	<!-- Required meta tags -->
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<meta name='viewport' content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0,shrink-to-fit=no">
 	<!--Favicon-->
 	<link rel="icon" href="./assets/images/logo.png" type="image/gif" sizes="16x16">
 	<!-- Page title -->
-	<title>Index | Blood Bank</title>
+	<title>Home | Blood Bank</title>
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<!-- Bootstrap CSS -->
@@ -20,27 +24,8 @@
 
 <body>
 	<!-- Header -->
-	<header class="navbar navbar-dark bg-danger">
-		<div class="container-fluid ">
-			<div class="container d-flex align-items-center justify-content-between">
-				<div class="d-flex align-items-center"> <i class="far fa-calendar-alt  text-white">&nbsp</i><span id="dateYear" class="text-white"></span> </div>
-				<div class="d-flex align-items-center"> <i class="far fa-clock text-white">&nbsp</i> <span id="datetime" class="text-white"></span> </div>
-			</div>
-		</div>
-	</header>
+	<?php include './includes/header.php';?>
 	<!-- End Header -->
-	<!-- Navbar -->
-	<nav>
-		<div class="logo mx-auto"> <img src="./assets/images/logo.png" height="100px" width="100px"> </div>
-		<input type="checkbox" id="click">
-		<label for="click" class="menu-btn"> <i class="fas fa-bars"></i> </label>
-		<ul class="mx-auto">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Register</a></li>
-			<li><a href="#">Login</a></li>
-		</ul>
-	</nav>
-	<!-- End Navbar -->
 	<!-- Main -->
 	<main>
 		<div class="jumbotron jumbotron-fluid bg-danger " style="height: 350px;">
@@ -84,14 +69,16 @@
 			<div class="row justify-content-md-center">
 				<div class="col col-lg-8">
 					<div class="container">
-						<form>
+						<form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 							<div class="row">
-								<div class="col-sm-3 ">
+								<div class="col-sm-2">
 									<select name="city" class="form-select " aria-label="Default select example">
 										<option selected value="">City</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
+										<?PHP 
+										$selectCity  = mysqli_query($connect,"SELECT `sno`,`city` FROM `hospitals`");
+										while ($selectCityRow = mysqli_fetch_array($selectCity)) { ?>
+											<option value="<?PHP echo $selectCityRow['sno'];?>"><?PHP echo $selectCityRow['city']; ?></option>
+										<?PHP } ?>
 									</select>
 								</div>
 								<div class="col-sm-3">
@@ -110,12 +97,14 @@
 								<div class="col-sm-3">
 									<select name="hospital" class="form-select" aria-label="Default select example">
 										<option selected value="">Hospital</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
+										<?PHP 
+										$selectHospital  = mysqli_query($connect,"SELECT `sno`,`name` FROM `hospitals`");
+										while ($selectHospitalRow = mysqli_fetch_array($selectHospital)) { ?>
+											<option value="<?PHP echo $selectHospitalRow['sno'];?>"><?PHP echo $selectHospitalRow['name']; ?></option>
+										<?PHP } ?>
 									</select>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-4">
 									<input name="SearchBlood" type="submit" class="btn btn-danger" value="Search" /> </div>
 							</div>
 						</form>
@@ -123,51 +112,70 @@
 				</div>
 			</div>
 			<div class="row justify-content-md-center mt-5 jumbotron jumbotron-fluid ">
-				<div class="col col-lg-8">
+				<div class="col col-sm-6">
 					<!-- table -->
 					<table class="table">
 						<thead>
 							<tr class="p-2">
-								<th scope="col">#</th>
 								<th scope="col">Hospital</th>
 								<th scope="col">Blood Group</th>
+								<th scope="col">Quantity</th>
 								<th scope="col">City</th>
 								<th scope="col">Request</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr class="p-2">
-								<th scope="row">1</th>
 								<td>Mark</td>
 								<td>Otto</td>
+								<td>@mdo</td>
 								<td>@mdo</td>
 								<td>
 									<input name="SearchBlood" type="submit" class="btn btn-danger  btn-sm" value="Request Blood" /> </td>
 							</tr>
-							<tr class="p-2">
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td>
-									<input name="SearchBlood" type="submit" class="btn btn-danger  btn-sm" value="Request Blood" /> </td>
-							</tr>
-							<tr class="p-2">
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td>
-									<input name="SearchBlood" type="submit" class="btn btn-danger  btn-sm" value="Request Blood" /> </td>
-							</tr>
-							<tr class="p-2">
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td>
-									<input name="SearchBlood" type="submit" class="btn btn-danger btn-sm" value="Request Blood" /> </td>
-							</tr>
+							<?PHP 
+								$selectBloodQuery = "
+									SELECT * FROM `availableblood` WHERE `quantity` != '0'
+								";
+								if (isset($_GET['city']) && $_GET['city'] != "") {
+									$city = $connect -> real_escape_string(strtoupper($_GET['city']));
+									$selectBloodQuery .="AND `hospital` = '$city'";
+								}
+								if (isset($_GET['bloodGroup']) && $_GET['bloodGroup'] != "") {
+									$bloodGroup = $connect -> real_escape_string($_GET['bloodGroup']);
+									$selectBloodQuery .="AND `bloodGroup` = '$bloodGroup'";
+								}
+								if (isset($_GET['hospital']) && $_GET['hospital'] != "") {
+									$hospital = $connect -> real_escape_string($_GET['hospital']);
+									$selectBloodQuery .="AND `hospital` = '$hospital'";
+								}
+								$selectBloodSql = mysqli_query($connect,$selectBloodQuery);
+								if (mysqli_num_rows($selectBloodSql) != 0) {
+								while ($selectBloodRow = mysqli_fetch_array($selectBloodSql)) {
+									$HospitalSno = $selectBloodRow[''];
+									$searchHospital = mysqli_query($connect,"SELECT * FROM `hospitals` WHERE `sno` = '$HospitalSno'");
+									$searchHospitalRow = mysqli_fetch_array($searchHospital);
+								?>
+								<tr class="p-2">
+									<td><?PHP echo $searchHospitalRow['hospital'];?></td>
+									<td><?PHP echo $selectBloodRow['bloodGroup'];?></td>
+									<td><?PHP echo $selectBloodRow['quantity'];?></td>
+									<td><?PHP echo $searchHospitalRow['city'];?></td>
+									<td>
+										<?PHP 
+										if (isset($_SESSION['ReceiverLogin'])) {
+											echo '<a href="myRequests.php?myRequestId ='.$selectBloodRow['sno'].'"  class="btn btn-danger  btn-sm"><small>Request Sample</small></a>';
+										}else {
+											echo '<a href="./login.php"  class="btn btn-danger  btn-sm"><small>Request Sample</small></a>';
+										}
+										?>
+									</td>
+								</tr>
+							<?PHP } }else { ?>
+								<tr class="p-2 text-center">
+									<th colspan='6'><span class="btn btn-danger btn-sm ">No Data found</span></th>
+								</tr>
+							<?PHP } ?>
 						</tbody>
 					</table>
 					<!-- end table -->
@@ -177,38 +185,11 @@
 	</main>
 	<!-- End Main -->
 	<!-- Footer -->
-	<div class="container-fluid pb-0 mb-0 justify-content-center text-white bg-danger ">
-		<footer>
-			<div class="row my-5 justify-content-center py-5">
-				<div class="col-11">
-					<div class="row ">
-						<!-- Grid column -->
-						<div class="col-md-8 mt-md-0 mt-3">
-							<!-- Content -->
-							<h3 class="text-uppercase text-left">The Online Blood Bank.</h3>
-							<p>Excuses never save a life, Blood donation does</p>
-						</div>
-						<div class="col-xl-2 col-md-4 col-sm-4 col-12">
-							<h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>
-							<ul class="list-unstyled">
-								<li class=""> <a href="index.html" class="text-white text-decoration-none ">Home</a> </li>
-								<li class=""> <a href="registration.html" class="text-white text-decoration-none">Register</a> </li>
-								<li class=""> <a href="login.html" class="text-white text-decoration-none">Login</a> </li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr>
-			<!-- Copyright -->
-			<div class="footer-copyright text-center py-3">©
-				<script>
-				document.write(new Date().getFullYear())
-				</script> Copyright: <a href="https://jayachandragoteti.github.io/" class="text-white">Jayachandra Goteti</a> </div>
-			<!-- Copyright -->
-		</footer>
-	</div>
-	<!-- Footer -->
+	<?php include './includes/footer.php';?>
+	<!-- End Footer -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="./assets/js/script.js"></script>
 </body>

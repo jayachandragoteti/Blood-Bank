@@ -91,7 +91,7 @@ if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['HospitalLogin'])) 
 							<input type="password" name="confirmPassword" class="form-select form-control bg-light text-danger border border-danger" id="" required/> 
 						</div>
 						<div class=" mb-3 text-center">
-							<input type="submit" name="UpdatePasswordSubmit" class="btn btn-sm btn-danger fw-bold rounded-pill" style="font-size:20px;" value="Update"/>
+							<input type="submit" name="UpdatePasswordSubmit" class="btn btn-sm btn-danger fw-bold rounded-pill" style="font-size:20px;" value="     Update	"/>
 						</div>
 					</form>
 					<!--Section: Block Content-->

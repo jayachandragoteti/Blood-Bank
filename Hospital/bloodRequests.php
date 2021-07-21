@@ -5,6 +5,8 @@ if (!isset($_SESSION['HospitalLogin'])) {
 	header("Location: ./../includes/logout.php");
 }
 $HospitalLogin = $_SESSION['HospitalLogin'];
+$msg = "";
+$error = "";
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,7 +39,13 @@ $HospitalLogin = $_SESSION['HospitalLogin'];
 					<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
 						<div class="row justify-content-md-center">
 							<div class="col col-lg- text-center text-danger mb-3 ">
-								<h2 class="h1 text-danger fw-bold">Blood Requests</h2> 
+								<div class="head  mt-0 pl-0 ">
+									<h2 class="h1 text-danger fw-bold border-bottom border-danger">Blood Requests</h2>  
+									<!-- Response Messages -->
+									<?php if($error!=""){?><div class="text-danger"><strong><i class="far fa-times-circle text-danger">&nbsp</i> <?php echo htmlentities($error); ?> </strong></div><?php }else if($msg !=""){?><div class="text-success"><strong><i class="far fa-check-circle text-success">&nbsp</i><?php echo htmlentities($msg); ?> </strong></div><?php }?>
+									<!-- End Response Messages -->
+								</div>
+								
 							</div>
 						</div>
 						<div class="row justify-content-md-center mb-5">

@@ -26,6 +26,7 @@ if (!isset($_SESSION['HospitalLogin'])) {
 		<!-- Header -->
 		<?PHP include './includes/header.php';?>
 		<!-- End Header -->
+
 		<div id="content" class="p-4 p-md-5 pt-5">
 			<div class="container ">
 				<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
@@ -61,6 +62,92 @@ if (!isset($_SESSION['HospitalLogin'])) {
 					</form>
 				</div>
 			</div>
+
+
+
+			<div class="container ">
+				<div class="container overflow-hidden mt-5 p-5 bg-white rounded text-white shadow rounded bg-body">
+					<div class="container border-bottom border-danger mb-5">
+						<div class="head  mt-0 pl-0">
+							<h2 class="text-danger fw-bold large">Available Blood Details</h2> </div>
+					</div>
+					<div class="row justify-content-md-center mb-5">
+							<div class="col col-lg-12">
+								<div class="container">
+									<form>
+										<div class="row float-right ">
+											<div class="col-sm-7">
+												<select name="bloodGroup" class=" custom-select" aria-label="Default select example">
+													<option selected value="">Blood Group</option>
+													<option value="A+">A+</option>
+													<option value="A-">A-</option>
+													<option value="B+">B+</option>
+													<option value="B-">B-</option>
+													<option value="O+">O+</option>
+													<option value="O-">O-</option>
+													<option value="AB+">AB+</option>
+													<option value="AB-">AB-</option>
+												</select>
+											</div>
+											<div class="col-sm-2">
+												<input name="SearchBlood" type="submit" class="btn btn-danger" value="Search           " /> </div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					<div class="col col-lg-12">
+							<!-- table -->
+							<table class="table">
+								<thead>
+									<tr class="p-2">
+										<th scope="col">#</th>
+										<th scope="col">Blood Group</th>
+										<th scope="col">Qunatity</th>
+										<th scope="col">Update</th>
+										<th scope="col">Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="p-2">
+										<th scope="row">1</th>
+										<td>Mark</td>
+										<td><input type="text" class="form-control" value="28" aria-describedby="addon-wrapping"></td>
+										<td><button type="button" class="btn btn-success">Update</button></td>
+										<td><button type="button" class="btn btn-danger">Delete</button></td>
+									</tr>
+									<tr class="p-2">
+										<th scope="row">2</th>
+										<td>Jacob</td>
+										<td><input type="text" class="form-control" value="28" aria-describedby="addon-wrapping"></td>
+										<td><button type="button" class="btn btn-success">Update</button></td>
+										<td><button type="button" class="btn btn-danger">Delete</button></td>
+									</tr>
+									<tr class="p-2">
+										<th scope="row">2</th>
+										<td>Jacob</td>
+										<td><input type="text" class="form-control" value="28" aria-describedby="addon-wrapping"></td>
+										<td><button type="button" class="btn btn-success">Update</button></td>
+										<td><button type="button" class="btn btn-danger">Delete</button></td>
+									</tr>
+									<tr class="p-2">
+										<th scope="row">2</th>
+										<td>Jacob</td>
+										<td><input type="text" class="form-control" value="28" aria-describedby="addon-wrapping"></td>
+										<td><button type="button" class="btn btn-success">Update</button></td>
+										<td><button type="button" class="btn btn-danger">Delete</button></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- end table -->
+						</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
 			<script src="./../assets/js/jquery.min.js"></script>
 			<script src="./../assets/js/popper.js"></script>
 			<script src="./../assets/js/bootstrap.min.js"></script>

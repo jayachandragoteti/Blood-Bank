@@ -98,6 +98,7 @@ if (isset($_POST['UpdatePasswordSubmit']) && isset($_SESSION['ReceiverLogin'])) 
 														<label for="confirmPassword" class="form-label">Confirm Password</label>
 														<input type="password" class="form-control border-danger shadow-none" name="confirmPassword" id="confirmPassword" required/> </div>
 												</div>
+												
 												<div class=" mb-3 text-center">
 													<input type="submit" name="UpdatePasswordSubmit" class="btn btn-sm btn-danger fw-bold rounded-pill" style="font-size:20px;" value="Update"/>
 												</div>

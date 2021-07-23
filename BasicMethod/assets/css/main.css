@@ -162,11 +162,7 @@ nav ul li a:hover {
   transition: 1s ease;
   background: rgb(248, 87, 87);
 }
-nav ul li a .active {
-  color: white;
-  transition: 1s ease;
-  background: rgb(248, 87, 87);
-}
+
 nav .menu-btn i {
   color: rgb(248, 87, 87);
   font-size: 22px;

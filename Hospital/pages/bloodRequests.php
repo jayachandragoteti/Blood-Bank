@@ -8,10 +8,9 @@
                     </div>
                     <div class="card-body justify-content-md-center">
                         <div class="container">
-                            <div class="row justify-content-md-center">
-                                <div class="col-md-5 mt-lg-5">
-                                    <form>
-                                        <div class="input-group col-sm-4">
+                            <div class="row justify-content-md-center"> 
+                                    <div class="col-md-4 mb-3 mt-3">
+                                        <div class="input-group col-md-">
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="inputGroupSelect01">Blood Group</label>
                                             </div>
@@ -27,8 +26,27 @@
                                                 <option value="AB-">AB-</option>
                                             </select>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 mt-3">
+                                        <div class="input-group col-md-">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Show Rows</label>
+                                            </div>
+                                            <select id="ShowRows" class="form-select form-control custom-select" onchange="BloodRequestsDetails()">
+                                                <option selected  value="10">10</option>
+                                                <option value="20">20</option>
+                                                <option value="30">30</option>
+                                                <option value="40">40</option>
+                                                <option value="50">50</option>
+                                                <option value="60">60</option>
+                                                <option value="70">70</option>
+                                                <option value="80">80</option>
+                                                <option value="90">90</option>
+                                                <option value="100">100</option>
+                                                <option value="">More</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 <div class="col-md-12 mt-5">
                                 <p class="fw-bold text-danger d-none alert-bell"><i class="fas fa-bell"></i> <span class="Available-Blood-Detail-Alerts"></span></p>
                                     <div class="table-responsive">
@@ -40,6 +58,7 @@
                                                     <th scope="col">Blood Group</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">Contact No</th>
+                                                    <th scope="col">Alloted</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="BloodRequestsResponse">

@@ -95,6 +95,8 @@ function ajaxLoginPageCall() {
 
 // Receiver Registration
 function receiverRegistration() {
+  $('.alert-bell').removeClass('d-none');
+  $('.Receiver-Registration-Alerts').html('Loading..');
   var formData = {
     receiverName: $('#receiverName').val(),
     receiverEmail: $('#receiverEmail').val(),
@@ -132,6 +134,8 @@ function receiverRegistration() {
 
 // Hospital Registration
 function hospitalRegistration() {
+  $('.alert-bell').removeClass('d-none');
+  $('.Hospital-Registration-Alerts').html('Loading...');
   var formData = {
     HospitalName: $('#HospitalName').val(),
     HospitalContactNo: $('#HospitalContactNo').val(),
@@ -172,6 +176,8 @@ function hospitalRegistration() {
 
 // User Login
 function userLogin() {
+  $('.alert-bell').removeClass('d-none');
+  $('.User-Login-Alerts').html('Loading...');
   var formData = {
     loginEmail: $('#loginEmail').val(),
     loginPassword: $('#loginPassword').val(),
@@ -202,6 +208,8 @@ function userLogin() {
 }
 // User Login
 function userLogin() {
+  $('.alert-bell').removeClass('d-none');
+  $('.User-Login-Alerts').html('Loading...');
   var formData = {
     loginEmail: $('#loginEmail').val(),
     loginPassword: $('#loginPassword').val(),
@@ -232,6 +240,8 @@ function userLogin() {
 }
 // Update Password
 function UpdatePassword() {
+  $('.alert-bell').removeClass('d-none');
+  $('.User-Password-Alerts').html('Loading...');
   var formData = {
     oldPassword: $('#oldPassword').val(),
     newPassword: $('#newPassword').val(),
@@ -283,6 +293,7 @@ function availableBlood() {
   var City = $('#availableBloodCityFilter').val();
   var BloodGroup = $('#availableBloodGroupFilter').val();
   var Hospital = $('#availableBloodHospitalFilter').val();
+  var ShowRows = $('#ShowRows').val();
   $.ajax({
     type: 'POST',
     url: './backScript.php',
@@ -291,6 +302,7 @@ function availableBlood() {
       City: City,
       BloodGroup: BloodGroup,
       Hospital: Hospital,
+      ShowRows: ShowRows,
     },
     success: function (response) {
       $('.AvailableBloodResponse').html(response);
@@ -299,6 +311,8 @@ function availableBlood() {
 }
 // Sample Request
 function sampleRequest(availableBloodSno) {
+  $('.alert-bell').removeClass('d-none');
+  $('.Sample-Request-Alerts').html('Loading...');
   $.ajax({
     type: 'POST',
     url: './backScript.php',
@@ -315,11 +329,14 @@ function sampleRequest(availableBloodSno) {
 
 // Update Receiver Profile
 function updateReceiverProfile() {
+  $('.alert-bell').removeClass('d-none');
+  $('.Update-Receiver-Profile-Alerts').html('Loading...');
   var formData = {
     ReceiverName: $('#ReceiverName').val(),
     ReceiverEmail: $('#ReceiverEmail').val(),
     ReceiverContactNo: $('#ReceiverContactNo').val(),
     ReceiverAddress: $('#ReceiverAddress').val(),
+    ShowRows: $('#ShowRows').val(),
     UpdateReceiverProfile: 'UpdateReceiverProfile',
   };
   if (

@@ -182,6 +182,15 @@ if (isset($_POST['MyRequests'])) {
                 <td><?PHP echo $selectHospitalRow['hospitalName'];?></td>
                 <td><?PHP echo $myRequestsRow['bloodGroup'];?></td>
                 <td><?PHP echo $myRequestsRow['datm'];?></td>
+				<td>
+					<?PHP  
+						if( $myRequestsRow['alloted'] == 1){
+							echo "Alloted";
+						}else{
+							echo "Pending";
+						}
+					?>
+				</td>
             </tr>
         <?PHP } }else { ?>
             <tr class="p-2 text-center">
@@ -191,6 +200,7 @@ if (isset($_POST['MyRequests'])) {
 }
 // Available Blood
 if (isset($_POST['AvailableBlood'])) {
+		$LIMIT = 10;
         $selectBloodQuery = "
             SELECT * FROM `availableblood` WHERE `quantity` != '0'
         ";
@@ -206,6 +216,17 @@ if (isset($_POST['AvailableBlood'])) {
             $Hospital = $connect -> real_escape_string($_POST['Hospital']);
             $selectBloodQuery .="AND `hospital` = '$Hospital'";
         }
+		if (isset($_POST['ShowRows'])) {
+			if ($_POST['ShowRows'] == "") {
+				$LIMIT = 10;
+			}elseif ($_POST['ShowRows'] == "More") {
+				$LIMIT = 1000000000000;
+			} else{
+				$LIMIT = $connect -> real_escape_string($_POST['ShowRows']);
+			}
+			
+		}
+		$selectBloodQuery .= "LIMIT $LIMIT";
         $selectBloodSql = mysqli_query($connect,$selectBloodQuery);
         if (mysqli_num_rows($selectBloodSql) != 0) {
             $i=1;
@@ -245,7 +266,7 @@ if (isset($_POST['SampleRequest']) && isset($_POST['availableBloodSno']) && $_PO
             $selectRequestDetailsRow = mysqli_fetch_array($selectRequestDetails);
             $hospital = $selectRequestDetailsRow['hospital'];
             $bloodGroup = $selectRequestDetailsRow['bloodGroup'];
-            $addRequest = mysqli_query($connect,"INSERT INTO `request`(`hospital`, `receiver`, `bloodGroup`) VALUES ('$hospital','$ReceiverLogin','$bloodGroup')");
+            $addRequest = mysqli_query($connect,"INSERT INTO `request`(`hospital`, `receiver`, `bloodGroup`,`alloted`) VALUES ('$hospital','$ReceiverLogin','$bloodGroup','0')");
             if ($addRequest) {
                 echo 'Request submitted successfully.';
             } else {

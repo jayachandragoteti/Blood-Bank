@@ -36,12 +36,12 @@
 				<h2 class="h1">Available Blood</h2> </div>
 		</div>
 		<div class="row justify-content-md-center">
-			<div class="col col-sm-8">
+			<div class="col col-lg-12">
 				<div class="container">
 					<form method="get" >
 						<div class="row">
-							<div class="col-sm-4">
-								<select name="city" id="availableBloodCityFilter"  class="form-select " aria-label="Default select example" onchange="availableBlood()">
+							<div class="col-sm-3">
+								<select name="city" id="availableBloodCityFilter"  class="form-select bg-light mb-2" aria-label="Default select example" onchange="availableBlood()">
 									<option selected value="">City</option>
 									<option value="">All</option>
 									<?PHP 
@@ -52,8 +52,8 @@
 										<?PHP } ?>
 								</select>
 							</div>
-							<div class="col-sm-4">
-								<select name="bloodGroup" id="availableBloodGroupFilter" class="form-select" aria-label="Default select example" onchange="availableBlood()">
+							<div class="col-sm-3">
+								<select name="bloodGroup" id="availableBloodGroupFilter" class="form-select bg-light mb-2" aria-label="Default select example" onchange="availableBlood()">
 									<option selected value="">Blood Group</option>
 									<option value="">All</option>
 									<option value="A+">A+</option>
@@ -66,8 +66,8 @@
 									<option value="AB-">AB-</option>
 								</select>
 							</div>
-							<div class="col-sm-4">
-								<select name="hospital" id="availableBloodHospitalFilter" class="form-select" aria-label="Default select example" onchange="availableBlood()">
+							<div class="col-sm-3">
+								<select name="hospital" id="availableBloodHospitalFilter" class="form-select bg-light mb-2" aria-label="Default select example" onchange="availableBlood()">
 									<option selected value="">Hospital</option>
 									<option value="">All</option>
 									<?PHP 
@@ -75,6 +75,22 @@
 										while ($selectHospitalRow = mysqli_fetch_array($selectHospital)) { ?>
 											<option value="<?PHP echo $selectHospitalRow['sno'];?>"><?PHP echo $selectHospitalRow['hospitalName']; ?></option>
 										<?PHP } ?>
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<select id="ShowRows" class="form-select bg-light mb-2" aria-label="Default select example" onchange="availableBlood()">
+									<option selected value="">Show Rows</option>
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="30">30</option>
+									<option value="40">40</option>
+									<option value="50">50</option>
+									<option value="60">60</option>
+									<option value="70">70</option>
+									<option value="80">80</option>
+									<option value="90">90</option>
+									<option value="100">100</option>
+									<option value="More">More</option>
 								</select>
 							</div>
 						</div>
@@ -86,7 +102,7 @@
 			<div class="col col-sm-10">
 				<!-- table -->
 				<div class="table-responsive">
-					<table class="table table-hover table-bordered border-danger ">
+					<table  id="dtBasicExample" cellspacing="0" width="100%"class="table table-striped table-hover table-bordered border-danger ">
 						<thead>
 							<tr class="p-2">
 								<th scope="col">Sno</th>
@@ -107,4 +123,5 @@
 			</div>
 		</div>
 	</div>
+	
 </section>

@@ -43,15 +43,15 @@ if (isset($_SESSION['HospitalLogin'])) {
 		<input type="checkbox" id="click">
 		<label for="click" class="menu-btn" id="sidebarCollapse"> <i class="fas fa-bars"></i> </label>
 		<ul class="mx-auto">
-			<li><a href="#" class="text-decoration-none Home" onclick="ajaxHomePageCall()"> <label for="click" >Home</label></a></li>
+			<li><a href="#" class="text-decoration-none Home" onclick="ajaxHomePageCall()"> <label for="click" style="cursor: pointer;" >Home</label></a></li>
 			<?PHP if(isset($_SESSION['ReceiverLogin'])){?>
-			<li><a href="#" class="text-decoration-none MyRequests" onclick="ajaxMyRequestsPageCall()"><label for="click" >My Requests</label></a></li>
-			<li><a href="#" class="text-decoration-none ChangePassword" onclick="ajaxChangePasswordPageCall()"><label for="click" >Change Password</label></a></li>
-            <li><a href="#" class="text-decoration-none Profile" onclick="ajaxProfilePageCall()"><label for="click" >Profile</label></a></li>
-			<li><a href="logout.php" class="text-decoration-none"><label for="click" >Logout</a></li>
+			<li><a href="#" class="text-decoration-none MyRequests" onclick="ajaxMyRequestsPageCall()"><label for="click"  style="cursor: pointer;" >My Requests</label></a></li>
+			<li><a href="#" class="text-decoration-none ChangePassword" onclick="ajaxChangePasswordPageCall()"><label for="click" style="cursor: pointer;" >Change Password</label></a></li>
+            <li><a href="#" class="text-decoration-none Profile" onclick="ajaxProfilePageCall()"><label for="click" style="cursor: pointer;" >Profile</label></a></li>
+			<li><a href="./logout.php" class="text-decoration-none">Logout</a></li>
 			<?PHP }else{?>
-			<li><a href="#" class="text-decoration-none Register" onclick="ajaxRegisterPageCall()"><label for="click" >Register</label></a></li>
-			<li><a href="#" class="text-decoration-none Login" onclick="ajaxLoginPageCall()"><label for="click" >Login</label></a></li>
+			<li><a href="#" class="text-decoration-none Register" onclick="ajaxRegisterPageCall()"><label for="click" style="cursor: pointer;" >Register</label></a></li>
+			<li><a href="#" class="text-decoration-none Login" onclick="ajaxLoginPageCall()"><label for="click" style="cursor: pointer;" >Login</label></a></li>
 			<?PHP }?>
 		</ul>
 	</nav>

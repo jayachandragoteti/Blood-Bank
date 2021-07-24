@@ -17,7 +17,7 @@
                     <div class="container mt-5 ReceiverRegistrationForm" style="display: none;">
                         <div class="row mt-5 ">
                             <div class="col-lg-12">
-                                <h3 class="text-center mb-5 text-danger">Receiver Registration</h3> </div>
+                                <h2 class="text-center mb-5 text-danger">Receiver Registration</h2> </div>
                             <div class="col-sm-6">
                                 <img src="./assets/images/Hopital1.png" class="img-fluid mt-5 h-75 w-100" alt="...">
                             </div>
@@ -73,7 +73,8 @@
                     <div class="container mt-5 z-index">
                         <div class="row mt-5 HospitalRegistrationForm">
                             <div class="col-lg-12">
-                                <h1 class="text-center mb-5 text-danger">Hospital Registration</h1> </div>
+                                <h2 class="text-center mb-5 text-danger">Hospital Registration</h2>
+                            </div>
                             <div class="col-sm-6"> <img src="./assets/images/Hospital.png" class="img-fluid mt-5 h-75 w-100" alt="..."> </div>
                             <div class="col-sm-6">
                                 <form id="HospitalRegistrationForm" class="md-5">
@@ -92,7 +93,15 @@
                                     <div class="mb-3 ">
                                         <label for="HospitalCity" class="form-label">City</label>
                                         <input type="text" name="HospitalCity" class="form-control border-danger shadow-none" id="HospitalCity" list="citylist" required/>
-                                        <datalist id="citylist"> </datalist>
+                                        <datalist id="citylist">
+                                            <?php 
+                                                include './../databaseConnection.php';
+                                                $SelectCity = mysqli_query($connect,"SELECT `city` FROM `hospitals`") or die();
+                                                $SelectCityNoRow = mysqli_num_rows($SelectCity);
+                                                if ($SelectCityNoRow > 0) { $SelectCityRow = mysqli_fetch_array($SelectCity);?>
+                                                    <option value="<?php echo $SelectCityRow['city']; ?>">
+                                            <?php } ?>
+                                        </datalist>
                                     </div>
                                     <div class="mb-3 ">
                                         <label for="HospitalPassword" class="form-label">Password</label>

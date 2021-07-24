@@ -10,7 +10,7 @@ if (isset($_SESSION['HospitalLogin']))
 if (isset($_POST['AvailableBloodDetails']))
 {
     $selectBloodQuery = "
-            SELECT * FROM `availableblood` WHERE `quantity` != '0'
+            SELECT * FROM `availableblood` WHERE `quantity` != '0' AND `hospital` = '$HospitalLogin'
         ";
 
     if (isset($_POST['bloodGroup']) && $_POST['bloodGroup'] != "")
@@ -80,6 +80,7 @@ if (isset($_POST['DeleteQuantity']) && $_POST['DeleteQuantitySno'] != "" && isse
 // Blood Requests Response
 if (isset($_POST['BloodRequestsResponse']))
 {
+    $LIMIT = 10;
     $myRequestsQuery = "SELECT * FROM `request` WHERE `hospital`= '$HospitalLogin' ";
 
     if (isset($_POST['bloodGroup']) && $_POST['bloodGroup'] != "")
@@ -87,7 +88,15 @@ if (isset($_POST['BloodRequestsResponse']))
         $bloodGroup = $_POST['bloodGroup'];
         $myRequestsQuery .= "AND `bloodGroup` ='$bloodGroup' ";
     }
-    $myRequestsQuery .= " ORDER BY `sno` DESC";
+    if (isset($_POST['ShowRows'])) {
+        if ($_POST['ShowRows'] == "") {
+            $LIMIT = 1000000000000;
+        }else{
+            $LIMIT = $connect -> real_escape_string($_POST['ShowRows']);
+        }
+        
+    }
+    $myRequestsQuery .= " ORDER BY `sno` DESC LIMIT $LIMIT";
     $myRequests = mysqli_query($connect, $myRequestsQuery);
     if ($myRequestsRow = mysqli_num_rows($myRequests) != 0)
     {
@@ -103,12 +112,29 @@ if (isset($_POST['BloodRequestsResponse']))
                 <td><?PHP echo $myRequestsRow['bloodGroup']; ?></td>
                 <td><a href='mailto:<?PHP echo $SelectReceiverRow['email']; ?>'><?PHP echo $SelectReceiverRow['email']; ?></a> </td>
                 <td><a href='tel:<?PHP echo $SelectReceiverRow['contactNo']; ?>'><?PHP echo $SelectReceiverRow['contactNo']; ?></a></td>
+                <td>
+                    <?PHP if ($myRequestsRow['alloted'] == 1) {
+                        echo "Alloted";
+                    } else { ?>
+                        <button type="submit" name="deleteInfo" onclick="AllotBlood('<?PHP echo $myRequestsRow['sno']; ?>')" class="btn btn-primary btn-sm">Allot</button>
+                    <?PHP } ?>
+                    
+                </td>
             </tr>
     <?PHP
         }
     }
 }
-
+// Allot Blood
+if (isset($_POST['AllotBlood']) && isset($_POST['RequestID'])) {
+    $RequestID = $connect -> real_escape_string($_POST['RequestID']);
+    $AllotBlood = mysqli_query($connect,"UPDATE `request`SET `alloted` = 1 WHERE `sno` = '$RequestID'");
+    if ($AllotBlood) {
+        echo "Alloted";
+    }else {
+        echo "Failed,try again";
+    } 
+}
 // Add Blood Info
 if (isset($_POST['AddBloodGroup']))
 {
@@ -116,7 +142,7 @@ if (isset($_POST['AddBloodGroup']))
     {   
         $bloodGroup = $connect->real_escape_string($_POST['bloodGroup']);
         $Quantity = $connect->real_escape_string($_POST['Quantity']);
-        $selectHospital = mysqli_query($connect,"SELECT * FROM `availableblood` WHERE `hospital` = '$HospitalLogin' AND bloodGroup` = '$bloodGroup'");
+        $selectHospital = mysqli_query($connect,"SELECT * FROM `availableblood` WHERE `hospital` = '$HospitalLogin' AND `bloodGroup` = '$bloodGroup'");
         if (mysqli_num_rows($selectHospital) == 0) {
             $AddBloodInfo = mysqli_query($connect, "INSERT INTO `availableblood`(`hospital`, `bloodGroup`, `quantity`) VALUES ('$HospitalLogin','$bloodGroup','$Quantity')");
             if ($AddBloodInfo)
@@ -138,7 +164,7 @@ if (isset($_POST['AddBloodGroup']))
     }
 
 }
-
+// Change Password
 if (isset($_POST['ChangePassword']) && isset($_SESSION['HospitalLogin'])) {
 	if (isset($_POST['oldPassword']) && $_POST['oldPassword'] != "" && isset($_POST['newPassword']) && $_POST['newPassword'] != "" && isset($_POST['confirmPassword']) && $_POST['confirmPassword'] != "") {
 		$Hospital = $_SESSION['HospitalLogin'];
@@ -146,7 +172,7 @@ if (isset($_POST['ChangePassword']) && isset($_SESSION['HospitalLogin'])) {
 		$confirmPassword = $connect -> real_escape_string($_POST['confirmPassword']);
 		if ($newPassword != $confirmPassword) {
 			echo "Password and confirm password should be same!";
-		}elseif ($newPassword < 8) {
+		}elseif (strlen($newPassword) < 8) {
 			echo "Password should contain at least eight characters. *";
 		} else {
 			$selectHospital = mysqli_query($connect,"SELECT * FROM `hospitals` WHERE `sno` = '$Hospital'");
